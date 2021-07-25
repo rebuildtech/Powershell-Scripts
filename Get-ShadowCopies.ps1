@@ -10,7 +10,7 @@ $checkdays = 30
 Function Get-DriveLetters($server)
 {
     $volumes = @{}
-    $allvs = Get-WmiObject win32_volume  -Property DeviceID, Name
+    $allvs = Get-WmiObject win32_volume
     foreach ($v in $allvs)
         {
             $volumes.add($v.DeviceID, $v.Name)
