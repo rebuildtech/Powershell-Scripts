@@ -1,0 +1,6 @@
+#to get the OS version and Count as per last password change (before 30 days)
+
+(Get-ADComputer -Properties PasswordLastSet,OperatingSystem -filter * |?{$_.passwordlastset -gt $(get-date).AddDays(-30)}).operatingsystem |Group-Object |select name,count
+
+# to get the OS version and count 
+Get-ADComputer -Filter "name -like '*'" -Properties operatingSystem | group -Property operatingSystem | Select Name,Count | Sort Name | ft -AutoSize
